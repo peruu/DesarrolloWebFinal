@@ -1,30 +1,34 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
-class User (models.Model):
+# FAV_GENRE_CHOICES = (
+# 	('FANTASY', "Fantasía"),
+# 	('FICTION', "Ficción"),
+# 	('HORROR', "Terror"),
+# 	('ROMANTIC', "Romantico"),
+# 	('None',"Ninguno"),
+# )
+class UserProfile(models.Model):
 	#Falta asociar uno o más libros
-	RUT = models.CharField(max_length=15) #RUT
+	user = models.OneToOneField(User,blank=True, null=True, on_delete=models.CASCADE)
+	is_admin = models.BooleanField(default=False)
+	is_user = models.BooleanField(default=False)
+
+class UserBook(models.Model):
+	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
+	RUN = models.CharField(max_length=15)
 	commune = models.CharField(max_length=20)
-	phone = models.PositiveIntegerField()
-	NONE = 'Ninguno'
-	FAV_GENRE_CHOICES = (
-		('FANTASY', "Fantasía"),
-		('FICTION', "Ficción"),
-		('HORROR', "Terror"),
-		('ROMANTIC', "Romantico"),
-	)
-	fav_genre = models.CharField(
-		max_length=20,
-		choices=FAV_GENRE_CHOICES,
-		default=NONE,
-	)
-
-	def __str__(self):
-		return self.RUT
-
-
+	phone = models.CharField(max_length=20)
+	# fav_genre = models.CharField(
+	# 	max_length=20,
+	# 	choices=FAV_GENRE_CHOICES,
+	# 	default='Ninguno'
+	# )
+class Administrator(models.Model):
+	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
+	dato = models.CharField(max_length=15)
 class Book (models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(UserBook, blank=True, null=True,on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
 	author = models.CharField(max_length=30)
 	editorial = models.CharField(max_length=30)

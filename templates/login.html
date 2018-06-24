@@ -32,15 +32,16 @@
         <div class="login-register" style="background-image:url(static/images/background/megamenubg.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="">
+                    <form class="form-horizontal form-material" id="loginform"  method="POST">
+                        {% csrf_token %}
                         <h3 class="box-title m-b-20">Sign In</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username"> </div>
+                                <input class="form-control" type="text" name="username" required="" placeholder="Username"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password"> </div>
+                                <input class="form-control" type="password" name="password" required="" placeholder="Password"> </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">

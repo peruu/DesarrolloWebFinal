@@ -6,8 +6,7 @@ class BookForm(ModelForm):
     class Meta:
         model = Book
         fields = [
-            'user',
-        	'title',
+            'title',
         	'author', 
         	'editorial', 
         	'book_type', 

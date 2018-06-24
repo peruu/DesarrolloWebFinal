@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +28,18 @@
 <body class="card-no-border">
 
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(static/images/background/megamenubg.jpg);">
+        <div class="login-register" style="background-image:url(images/background/megamenubg.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="index.html">
+                  <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                      <button type="submit" class="btn btn-primary">Crear Admin</button>
+                    {% endbuttons %}
+
+                  </form>
+                    <!-- <form class="form-horizontal form-material" id="loginform" action="index.html">
                         <h3 class="box-title m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <div class="col-xs-12">
@@ -63,7 +72,7 @@
                                 Already have an account? <a href="pages-login.html" class="text-info m-l-5"><b>Sign In</b></a>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
