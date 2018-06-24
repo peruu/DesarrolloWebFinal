@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block contenido %}
+
+<!-- INICIO CONTENEDOR PRINCIPAL -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="form-group">
+					<h1 style="margin-top:30px;">Agregar libro</h1>
+					<form enctype="multipart/form-data" method="POST" class="">
+						{% csrf_token %}
+						{% bootstrap_form form %}
+						<input type="submit" value="Enviar" class="btn btn-primary float-right btn-lg">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- FIN CONTENEDOR PRINCIPAL -->
+
+{% endblock contenido %}
