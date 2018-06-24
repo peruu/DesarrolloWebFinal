@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block contenido %}
+
+	<div class="container">
+		<h1 style="margin-top:30px;">Biblioteca digital</h1>
+		<div class="row">
+			<div class="col-10"></div>
+			<div class="col-2">
+				<!--ESTO HAY QUE HACERLO FUNCIONAR -->
+				<form action="#" method="get">
+					<input type="button" class="btn btn-primary float-right btn-lg" value="Agregar libro" name="btn_add">
+				</form>
+				<!-- FIN DEL FORM -->
+			</div>
+			<div class="col-lg-12">
+				<table class="table table-striped">
+				  <thead>
+					  <!--FILA DE ATRIBUTOS DE COLUMNAS -->
+						<tr>
+						  <th scope="col">ID</th>
+						  <th scope="col">Título</th>
+						  <th scope="col">Autor</th>
+						  <th scope="col">Editorial</th>
+						  <th scope="col">Tipo</th>
+						  <th scope="col">Género</th>
+						  <th scope="col">Idioma</th>
+						  <th scope="col">Original</th>
+						  <th scope="col">Tipo transacción</th>
+						  <th scope="col">Precio</th>
+						  <th scope="col">Comentario</th>
+						  <th scope="col">Número de páginas</th>
+						  <th scope="col">Imagen</th>
+						</tr>
+				  </thead>
+					  <tbody>
+					<!--INICIO DE LA FILA. AQUI SE LISTAN LOS REGISTROS-->
+					{% for book in b %}
+					  	<tr>				
+					 		<td> {{book.id}} </td>
+					  		<td> {{book.title}} </td>
+							<td> {{book.author}} </td>
+							<td> {{book.editorial}} </td>
+							<td> {{book.book_type}} </td>
+							<td> {{book.genre}} </td>
+							<td> {{book.language}} </td>
+							<td> {{book.original}} </td>
+							<td> {{book.transaction}} </td>
+							<td> {{book.price}} </td>
+							<td> {{book.comment}} </td>
+							<td> {{book.number_of_pages}} </td>
+							<td> <img src =" {{ book.picture.url }}" alt="" class="img-thumbnail"></td>
+							<td>
+								<!--BOTON QUE AL APRETAR DESPLIEGA OPCIONES EN CADA REGISTRO DE LA TABLA-->
+								<div class="dropdown">
+							  		<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manager</button>
+
+								 	<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+									<!--BOTON EDITAR EN CADA REGISTRO DE LA TABLA-->
+										<a style="text-decoration:none" href="{% url 'update_book' book.id %}">
+								      		<button class="dropdown-item" type="button">Editar</button>
+								    	</a>
+
+									<!--BOTON ELIMINAR EN CADA REGISTRO DE LA TABLA-->
+        								<a style="text-decoration:none" href="{% url 'delete_book' book.id %}">
+								     		<button class="dropdown-item" type="button">Eliminar</button>
+								    	</a>
+									</div>
+								</div>
+						  	</td>
+						</tr> <!--FIN DE LA FILA-->
+					{% endfor %}
+				</tbody>
+				</table>
+			</div>
+
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-end">
+
+				<!--BOTON PREVIOUS-->
+					{% if b.has_previous %}
+			            <li class="page-item">
+			            	<a class="page-link" href="?page={{ b.previous_page_number }}" tabindex="-1">Previous</a>
+			            </li>
+			        {% endif %}
+
+				<!--BOTONES QUE DEPENDEN DE LOS REGISTROS-->
+			        {% for page in b.paginator.page_range %}
+			            <li class="{% if b.number == page %}active{% endif %}">
+		                	<a class="page-link" href="?page={{ page }}">{{ page }}</a>
+			            </li>
+			        {% endfor %}
+
+				<!--BOTON NEXT-->
+			        {% if b.has_next %}
+			            <li class="page-item">
+			          		<a class="page-link" href="?page={{ b.next_page_number }}">Next</a>
+				       	</li>
+			        {% endif %}
+
+	      		</ul>
+			</nav>
+		</div>
+	</div>
+{% endblock contenido %}
