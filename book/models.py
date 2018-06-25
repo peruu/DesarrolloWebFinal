@@ -15,6 +15,7 @@ class UserProfile(models.Model):
 	is_admin = models.BooleanField(default=False)
 	is_user = models.BooleanField(default=False)
 
+<<<<<<< HEAD
 class UserBook(models.Model):
 	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
 	RUN = models.CharField(max_length=15)
@@ -28,6 +29,9 @@ class UserBook(models.Model):
 class Administrator(models.Model):
 	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
 	dato = models.CharField(max_length=15)
+=======
+
+>>>>>>> pr/4
 class Book (models.Model):
 	user = models.ForeignKey(UserBook, blank=True, null=True,on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
@@ -71,7 +75,7 @@ class Book (models.Model):
 	price = models.PositiveIntegerField()
 	comment = models.TextField()
 	number_of_pages = models.PositiveIntegerField()
-	picture = models.ImageField(upload_to='book/picture_books')
+	picture = models.ImageField(upload_to='media')
 
 	def __str__(self):
 		return self.title

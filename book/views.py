@@ -10,6 +10,40 @@ from book.forms import BookForm
 
 
 # Create your views here.
+<<<<<<< HEAD
+=======
+def index(request):
+	template_name = "login.html"
+	return render(request,template_name)
+
+
+
+def inicio(request):
+	object_list = Book.objects.all() 
+	template_name = "inicio.html"
+	return render(request, template_name, {'object_list':object_list})
+
+
+
+def list_book(request):
+	object_list = Book.objects.all().order_by('-id')				#LISTA 
+	paginator = Paginator(object_list, 3) 							#PARA MOSTRAR 3 POR PAGINA
+	page = request.GET.get('page')									#PASA SABER QUÉ PÁGINA EN F(X) DE REGISTROS
+
+	data = {}
+	template_name = 'list_book.html'
+
+	try:
+		b = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		b = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		b = paginator.page(paginator.num_pages)
+
+	return render(request, template_name, {'object_list':object_list, 'b':b})
+>>>>>>> pr/4
 
 
 
