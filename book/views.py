@@ -16,8 +16,9 @@ def index(request):
 
 
 def inicio(request):
+	object_list = Book.objects.all() 
 	template_name = "inicio.html"
-	return render(request,template_name)
+	return render(request, template_name, {'object_list':object_list})
 
 
 

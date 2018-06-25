@@ -23,6 +23,7 @@ class User (models.Model):
 		return self.RUT
 
 
+
 class Book (models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
@@ -66,7 +67,7 @@ class Book (models.Model):
 	price = models.PositiveIntegerField()
 	comment = models.TextField()
 	number_of_pages = models.PositiveIntegerField()
-	picture = models.ImageField(upload_to='book/picture_books')
+	picture = models.ImageField(upload_to='media')
 
 	def __str__(self):
 		return self.title
