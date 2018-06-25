@@ -1,34 +1,36 @@
-from django import forms
 from django.forms import ModelForm
-from book.models import *
+from book.models import Book, User
 
-class GenreForm(forms.ModelForm):
-    adventure = forms.BooleanField()
+
+class BookForm(ModelForm):
     class Meta:
-<<<<<<< HEAD
         model = Book
         fields = [
             'title',
-        	'author', 
-        	'editorial', 
-        	'book_type', 
-        	'genre', 
-        	'language', 
-        	'original', 
-        	'transaction', 
-        	'price', 
-        	'comment', 
-        	'number_of_pages', 
-        	'picture',
+            'author', 
+            'editorial', 
+            'book_type', 
+            'genre', 
+            'language', 
+            'original', 
+            'transaction', 
+            'price', 
+            'comment', 
+            'number_of_pages', 
+            'picture',
         ]
 
-=======
-        model = Genre
-        fields = '__all__'
->>>>>>> fd0270f1a5aecbefe957dd25fc20d77e6031b0f0
         labels = {
-            'adventure': 'Aventura',
-        }
-        widgets = {
-            'adventure': forms.widgets.CheckboxInput(),
+            'title' : 'Título',
+            'author' : 'Autor/a', 
+            'editorial' : 'Editorial', 
+            'book_type' : 'Tipo de texto', 
+            'genre' : 'Género', 
+            'language' : 'Idioma', 
+            'original' : 'Original o no', 
+            'transaction' : 'Tipo de transacción', 
+            'price' : 'Valor', 
+            'comment' : 'Comentario', 
+            'number_of_pages' : 'Número de páginas', 
+            'picture' : 'Imagen del texto', 
         }

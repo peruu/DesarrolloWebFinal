@@ -1,4 +1,9 @@
 from django.contrib import admin
+from .models import Book
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ("user",)
+
 # from .models import User, Book
 # from django.utils.safestring import mark_safe
 #

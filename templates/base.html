@@ -30,7 +30,7 @@
                <a class="navbar-brand" href="javascript:void(0)">
                   <!-- Logo icon -->
                   <b>
-                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                     
                      <!-- Dark Logo icon -->
                      <img src="{% static 'images/logo-icon.png' %}" alt="homepage" class="dark-logo" />
 
@@ -89,38 +89,39 @@
                      </a>
                      <ul aria-expanded="false" class="collapse">
                         <li>
-                           <a href="javascript:void()">My Profile </a>
+                           <a href="javascript:void()">Mi perfil</a>
                         </li>
                         <li>
-                           <a href="javascript:void()">My Balance</a>
+                           <a href="javascript:void()">Editar perfil</a>
                         </li>
                         <li>
-                           <a href="javascript:void()">Inbox</a>
-                        </li>
-                        <li>
-                           <a href="javascript:void()">Account Setting</a>
-                        </li>
-                        <li>
-                           <a href="javascript:void()">Logout</a>
+                           <a href="{% url 'logout_user' %}">Salir</a>
                         </li>
                      </ul>
                   </li>
                   <li class="nav-devider"></li>
                   <li class="nav-small-cap">Mi Biblioteca</li>
                   <li>
-                     <a class="has-arrow waves-effect waves-dark " href="javascript:void(0)" aria-expanded="false">
+                     <a class="has-arrow waves-effect waves-dark " href="{% url 'inicio' %}" 
+                     aria-expanded="false">
                         <img src="{% static 'images/iconos/libro.png' %}" height="30px" width="30px" alt="menu">
-                        <i class="mdi mdi-bullseye"></i>
-                        <span class="hide-menu">Apps</span>
+                        <span class="hide-menu">Todo libros</span>
+                     </a>
+
+                  </li>
+                  <li>
+                     <a class="has-arrow waves-effect waves-dark " href="{% url 'list_book' %}" 
+                     aria-expanded="false">
+                        <img src="{% static 'images/iconos/libro.png' %}" height="30px" width="30px" alt="menu">
+                        <span class="hide-menu">Mis libros</span>
                      </a>
 
                   </li>
 
                   <li>
-                     <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                     <a class="has-arrow waves-effect waves-dark" href="{% url 'add_book' %}" aria-expanded="false">
                        <img src="{% static 'images/iconos/libro.png' %}" height="30px" width="30px" alt="menu">
-                       <i class="mdi mdi-bullseye"></i>
-                       <span class="hide-menu">Inbox</span>
+                       <span class="hide-menu">Publicar libro</span>
 
                      </a>
                   </li>

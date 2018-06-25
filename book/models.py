@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
-<<<<<<< HEAD
 # FAV_GENRE_CHOICES = (
 # 	('FANTASY', "Fantasía"),
 # 	('FICTION', "Ficción"),
@@ -15,7 +14,6 @@ class UserProfile(models.Model):
 	is_admin = models.BooleanField(default=False)
 	is_user = models.BooleanField(default=False)
 
-<<<<<<< HEAD
 class UserBook(models.Model):
 	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
 	RUN = models.CharField(max_length=15)
@@ -29,10 +27,7 @@ class UserBook(models.Model):
 class Administrator(models.Model):
 	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
 	dato = models.CharField(max_length=15)
-=======
-
->>>>>>> pr/4
-class Book (models.Model):
+class Book(models.Model):
 	user = models.ForeignKey(UserBook, blank=True, null=True,on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
 	author = models.CharField(max_length=30)
@@ -75,28 +70,7 @@ class Book (models.Model):
 	price = models.PositiveIntegerField()
 	comment = models.TextField()
 	number_of_pages = models.PositiveIntegerField()
-	picture = models.ImageField(upload_to='media')
+	picture = models.ImageField(upload_to='book/picture_books')
 
 	def __str__(self):
 		return self.title
-=======
-
-class Genre(models.Model):
-    adventure = models.BooleanField()
-    art = models.BooleanField()
-    biography = models.BooleanField()
-    fiction = models.BooleanField()
-    fantasy = models.BooleanField()
-    history = models.BooleanField()
-    horror = models.BooleanField()
-    mistery = models.BooleanField()
-    miythology = models.BooleanField()
-    poetry = models.BooleanField()
-    romance = models.BooleanField()
-    science = models.BooleanField()
-    superhero = models.BooleanField()
-    thriller = models.BooleanField()
-    tragedy = models.BooleanField()
-    western = models.BooleanField()
-    
->>>>>>> fd0270f1a5aecbefe957dd25fc20d77e6031b0f0
