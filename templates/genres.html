@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block contenido %}
+<hr>
+<div class="form-group text-center p-b-20">
+<div class="col-xs- 12">
+<h1>Géneros de interés</h1>
+<h2>Seleccione al menos 3 géneros de su interés</h2>
+<hr>
+<form>
+    <div class="form-group">
+    <label for = "{{form.adventure.name}}">{{form.adventure.label}}</label>
+    {{form.adventure}}
+    <input id="adventure" type='checkbox' name="adventure"/>
+    </div>
+    
+    <div>
+        <button class="btn btn-info btn-lg btn-rounded text-uppercase waves-effect waves-light" type="submit">Siguiente</button>
+    </div>
+</div>
+</form> 
+{% endblock contenido%}

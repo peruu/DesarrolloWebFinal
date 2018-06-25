@@ -1,6 +1,5 @@
 from django.urls import path
 from authority import views
-
 urlpatterns = [
 	path('register/',views.signup_user,name="signup_user"),
     path('',views.login,name="login"),

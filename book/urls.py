@@ -1,5 +1,6 @@
 from django.urls import path
 from book import views
+<<<<<<< HEAD
 urlpatterns = [
     
 	# path('inicio/', views.inicio, name="inicio"),
@@ -9,4 +10,11 @@ urlpatterns = [
 	# path('delete_book/<str:id>', views.delete_book, name="delete_book"),
 
 	#HAY QUE HACER FUNCIONAR EL BOTÓN DE AGREGAR LIBRO EN LIST_BOOK
+=======
+
+
+urlpatterns = [
+    path('',views.index,name="index"),
+    path('/genres',views.add_genres,name="genres"),
+>>>>>>> fd0270f1a5aecbefe957dd25fc20d77e6031b0f0
 ]

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+<<<<<<< HEAD
 # FAV_GENRE_CHOICES = (
 # 	('FANTASY', "Fantasía"),
 # 	('FICTION', "Ficción"),
@@ -74,3 +75,24 @@ class Book (models.Model):
 
 	def __str__(self):
 		return self.title
+=======
+
+class Genre(models.Model):
+    adventure = models.BooleanField()
+    art = models.BooleanField()
+    biography = models.BooleanField()
+    fiction = models.BooleanField()
+    fantasy = models.BooleanField()
+    history = models.BooleanField()
+    horror = models.BooleanField()
+    mistery = models.BooleanField()
+    miythology = models.BooleanField()
+    poetry = models.BooleanField()
+    romance = models.BooleanField()
+    science = models.BooleanField()
+    superhero = models.BooleanField()
+    thriller = models.BooleanField()
+    tragedy = models.BooleanField()
+    western = models.BooleanField()
+    
+>>>>>>> fd0270f1a5aecbefe957dd25fc20d77e6031b0f0
