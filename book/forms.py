@@ -25,6 +25,7 @@ class GenreForm(forms.ModelForm):
 =======
         model = Genre
         fields = '__all__'
+>>>>>>> fd0270f1a5aecbefe957dd25fc20d77e6031b0f0
         labels = {
             'adventure': 'Aventura',
         }
