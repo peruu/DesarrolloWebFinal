@@ -8,7 +8,7 @@ from book.models import *
 # from django.contrib.auth.forms import UserCreationForm
 #
 def login_user(request):
-    template_name = "login.html"
+    template_name = "login/login.html"
     data = {}
     logout(request)
     username = password = ""
@@ -31,7 +31,7 @@ def login_user(request):
     return render(request,template_name)
 
 def signup_user(request):
-    template_name="register.html"
+    template_name="register/register.html"
     data = {}
     form_admin = SignUpUserForm(request.POST or None)
 

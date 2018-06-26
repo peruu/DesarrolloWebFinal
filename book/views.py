@@ -12,12 +12,12 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url="/")
 def inicio(request):
-	template_name = "index.html"
+	template_name = "book/index.html"
 	return render(request,template_name)
 
 @login_required(login_url="/")
 def detail_book(request,id):
-	template_name = "detail_book.html"
+	template_name = "book/detail_book.html"
 	data = {}
 	book = Book.objects.get(id=id)
 	print(book)
@@ -29,7 +29,7 @@ def list_book(request):
 	paginator = Paginator(object_list, 3) 							#PARA MOSTRAR 3 POR PAGINA
 	page = request.GET.get('page')									#PASA SABER QUÉ PÁGINA EN F(X) DE REGISTROS
 	data = {}
-	template_name = 'list_book.html'
+	template_name = 'book/list_book.html'
 	try:
 		b = paginator.page(page)
 	except PageNotAnInteger:
@@ -43,7 +43,7 @@ def list_book(request):
 	return render(request, template_name, data)
 @login_required(login_url="/")
 def add_book(request):
-	template_name = 'add_book.html'
+	template_name = 'book/add_book.html'
 	data={}
 	if request.method == "POST":
 		form = BookForm(request.POST, request.FILES)
@@ -122,7 +122,7 @@ def add_book(request):
 # Create your views here.
 @login_required(login_url="/")
 def index(request):
-    template_name = "index.html"
+    template_name = "book/index.html"
     return render(request,template_name)
 
 def add_genres(request):

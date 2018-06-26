@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="static/images/libro.png">
-    <title>Biliteca</title>
+    <title>Bibliteca</title>
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- page css -->
@@ -59,7 +59,7 @@
 
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
-                                Don't have an account? <a href="pages-register.html" class="text-info m-l-5"><b>Sign Up</b></a>
+                                Don't have an account? <a href="{% url 'signup_user' %}" class="text-info m-l-5"><b>Sign Up</b></a>
                             </div>
                         </div>
                     </form>
