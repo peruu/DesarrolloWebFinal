@@ -1,19 +1,22 @@
-
 from django.shortcuts import render, redirect
 from book.models import *
 from book.forms import BookForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
-# from django.http import HttpResponse
-# from django.http import JsonResponse
-# from django.template import RequestContext, loader
-# from django.contrib import messages
-# Create your views here.
+
+
 
 @login_required(login_url="/")
-def inicio(request):
+def index(request):
+	object_list = Book.objects.filter(transaction='EXCHANGE') 
+	data={}
 	template_name = "book/index.html"
-	return render(request,template_name)
+	user = User.objects.get(username=request.user.username)
+	user_profile = UserProfile.objects.get(user=user)
+	data['object_list'] = object_list
+	return render(request, template_name, data)
+
+
 
 @login_required(login_url="/")
 def detail_book(request,id):
@@ -23,11 +26,25 @@ def detail_book(request,id):
 	print(book)
 	data['detail_book']=book
 	return render(request,template_name,data)
-@login_required(login_url="/")	
+
+
+
+@login_required(login_url="/")
+def view_book(request,id):
+	template_name = "book/view_book.html"
+	data = {}
+	book = Book.objects.get(id=id)
+	print(book)
+	data['detail_book']=book
+	return render(request,template_name,data)
+
+
+
+@login_required(login_url="/")  
 def list_book(request):
-	object_list = Book.objects.all().order_by('-id')				#LISTA
-	paginator = Paginator(object_list, 3) 							#PARA MOSTRAR 3 POR PAGINA
-	page = request.GET.get('page')									#PASA SABER QUÉ PÁGINA EN F(X) DE REGISTROS
+	object_list = Book.objects.all().order_by('-id')                #LISTA
+	paginator = Paginator(object_list, 3)                           #PARA MOSTRAR 3 POR PAGINA
+	page = request.GET.get('page')                                  #PASA SABER QUÉ PÁGINA EN F(X) DE REGISTROS
 	data = {}
 	template_name = 'book/list_book.html'
 	try:
@@ -36,11 +53,14 @@ def list_book(request):
 		# If page is not an integer, deliver first page.
 		b = paginator.page(1)
 	except EmptyPage:
-		# If page is out of range (e.g. 9999), deliver last page of results.
+		# If page is out of rangAPRETARe (e.g. 9999), deliver last page of results.
 		b = paginator.page(paginator.num_pages)
 	data['object_list'] = object_list
 	data['b'] = b
 	return render(request, template_name, data)
+
+
+
 @login_required(login_url="/")
 def add_book(request):
 	template_name = 'book/add_book.html'
@@ -82,56 +102,43 @@ def add_book(request):
 		form = BookForm()
 	data['form'] = form
 	return render(request, template_name, data)
-#
-#
-# #HAY QUE HACER FUNCIONAR EL BOTÓN DE AGREGAR LIBRO EN LIST_BOOK
-#
-#
-# def update_book(request,id):
-# 	data = {}
-# 	book = Book.objects.get(id=id)
-# 	if request.method == "GET":
-# 		data['form'] = BookForm(instance=book)
-# 	else:
-# 		data['form']= BookForm(request.POST,request.FILES, instance=book)
-# 		b = data['form']
-# 		if b.is_valid():
-# 			b.save()
-# 		return redirect('list_book')
-# 	template_name = 'add_book.html'
-# 	return render(request, template_name, data)
-#
-#
-#
-# def delete_book(request,id):
-# 	b = Book.objects.get(id=id)
-#
-# 	if Book.objects.filter(id=id).exists():
-# 		b = Book.objects.get(id=id)
-# 		b.delete()
-# 	else:
-# 		print("No existe")
-#
-# 	return redirect('list_book')
-#
-#
-# def prueba(request):
-#     template_name = "prueba.html"
-#     return render(request,template_name)
 
-# Create your views here.
+
+
 @login_required(login_url="/")
-def index(request):
-    template_name = "book/index.html"
-    return render(request,template_name)
+def edit_book(request,id):
+	template_name = "book/add_book.html"
+	data = {}
+	book = Book.objects.get(id=id)
+	if request.method == "GET":
+		data['form'] = BookForm(instance=book)
+	else:
+		form_book= BookForm(request.POST,request.FILES, instance=book)
+		if form_book.is_valid():
+			form_book.save()
+		return redirect('list_book')
+	return render(request, template_name, data)
 
-def add_genres(request):
-    template_name="genres.html"
-    data = {}
-    #if request.method == 'POST':
-    #form_genre = GenreForm(request.POST or None)
-    #if form_genre.is_valid():
-    #    form_genre.save()
-    #    return redirect("base")
-    #data['form'] = form_genre
-    return render(request,template_name,data)
+
+
+@login_required(login_url="/")
+def delete_book(request,id):
+	b = Book.objects.get(id=id)
+	b.delete()
+	return redirect('list_book')
+#####USERBOOK#####
+
+
+@login_required(login_url="/")
+def view_sales(request):
+	object_list = Book.objects.filter(transaction='SALE') 
+	template_name = "book/view_sales.html"
+	return render(request, template_name, {'object_list':object_list})
+
+
+@login_required(login_url="/")
+def view_both(request):
+	object_list = Book.objects.all() 
+	template_name = "book/view_both.html"
+	return render(request, template_name, {'object_list':object_list})
+

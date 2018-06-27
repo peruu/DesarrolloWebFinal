@@ -89,23 +89,26 @@
                      </a>
                      <ul aria-expanded="false" class="collapse">
                         <li>
-                           <a href="javascript:void()">Mi perfil</a>
+                           <a href="">Mi perfil</a>
                         </li>
                         <li>
-                           <a href="javascript:void()">Editar perfil</a>
+                           <a href="">Editar perfil</a>
                         </li>
                         <li>
                            <a href="{% url 'logout_user' %}">Salir</a>
                         </li>
                      </ul>
                   </li>
+
                   <li class="nav-devider"></li>
+                  {% block menu %}
                   <li class="nav-small-cap">Mi Biblioteca</li>
                   <li>
-                     <a class="has-arrow waves-effect waves-dark " href="{% url 'inicio' %}" 
+
+                     <a class="has-arrow waves-effect waves-dark " href="{% url 'index' %}" 
                      aria-expanded="false">
                         <img src="{% static 'images/iconos/libro.png' %}" height="30px" width="30px" alt="menu">
-                        <span class="hide-menu">Todo libros</span>
+                        <span class="hide-menu"">Todo libros</span>
                      </a>
 
                   </li>
@@ -122,9 +125,9 @@
                      <a class="has-arrow waves-effect waves-dark" href="{% url 'add_book' %}" aria-expanded="false">
                        <img src="{% static 'images/iconos/libro.png' %}" height="30px" width="30px" alt="menu">
                        <span class="hide-menu">Publicar libro</span>
-
                      </a>
                   </li>
+                  {% endblock menu %}
                </ul>
             </nav>
             <!-- End Sidebar navigation -->

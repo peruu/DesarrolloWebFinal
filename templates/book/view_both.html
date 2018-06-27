@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+{% load bootstrap4 %}
+
+{% block contenido %}
+
+
+<!-- INICIO RADIO BUTTON -->
+<div class="container">
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4">
+			<div class="btn-group btn-group-toggle">
+			  	<label class="btn btn-secondary">
+			    	<a href="{% url 'index' %}" class="">Intercambio</a>
+			  	</label>
+				<label class="btn btn-secondary">
+			    	<a href="{% url 'view_sales' %}" class="">Ventas</a>
+				</label>
+				<label class="btn btn-secondary active">
+			    	<a href="{% url 'view_both' %}" class="">Ambos</a>
+				</label>
+			</div>
+		</div>
+		<div class="col-4"></div>
+	</div>
+</div>
+<!-- FIN RADIO BUTTON -->
+
+<div class="container m-4">
+	<div class="row">
+		{% for book in object_list %}
+			<div class="col-4">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="{{ book.picture.url }}" alt="Card image cap">
+					<div class="card-body">
+					    <h5 class="card-title">Título: {{book.title}} </h5>
+					    <p class="card-text">Autor/a: {{book.author}}</p>
+					    <p class="card-text">Editorial: {{book.editorial}}</p>
+					    <p class="card-text">Transacción: {{book.transaction}}</p>
+					    <p class="card-text">Valor: {{book.price}}</p>
+
+					    <a style="text-decoration:none" href="{% url 'view_book' book.id %}" class="btn btn-primary">
+							<button class="dropdown-item" type="button">Ver libro</button>
+						</a>
+				  	</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock contenido %}

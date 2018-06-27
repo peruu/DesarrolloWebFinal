@@ -29,7 +29,7 @@
 					  		<td> {{book.title}} </td>
 							<td> {{book.author}} </td>
 							<td> {{book.editorial}} </td>
-							<td> <img src =" {{ book.picture.url }}" alt="" class="img-thumbnail"></td>
+							<!-- <td> <img src =" {{ book.picture.url }}" alt="" class="img-thumbnail"></td> -->
 							<td>
 								
 								<!--BOTON QUE AL APRETAR DESPLIEGA OPCIONES EN CADA REGISTRO DE LA TABLA-->
@@ -46,10 +46,10 @@
 								    	</a>
 
 									<!--BOTON ELIMINAR EN CADA REGISTRO DE LA TABLA-->
-        								<a style="text-decoration:none" href="">
+        							<a style="text-decoration:none" href="{% url 'edit_book' book.id %}">
 								     		<button class="dropdown-item" type="button">Editar publicación</button>
 								    	</a>
-								    	<a style="text-decoration:none" href="">
+								    <a style="text-decoration:none" href="{% url 'delete_book' book.id %}">
 								     		<button class="dropdown-item" type="button">Eliminar</button>
 								    	</a>
 									</div>

@@ -1,32 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
-# FAV_GENRE_CHOICES = (
-# 	('FANTASY', "Fantasía"),
-# 	('FICTION', "Ficción"),
-# 	('HORROR', "Terror"),
-# 	('ROMANTIC', "Romantico"),
-# 	('None',"Ninguno"),
-# )
+
 class UserProfile(models.Model):
-	#Falta asociar uno o más libros
 	user = models.OneToOneField(User,blank=True, null=True, on_delete=models.CASCADE)
 	is_admin = models.BooleanField(default=False)
 	is_user = models.BooleanField(default=False)
-
+	def _str_(self):
+		return self.user
 class UserBook(models.Model):
 	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
 	RUN = models.CharField(max_length=15)
 	commune = models.CharField(max_length=20)
 	phone = models.CharField(max_length=20)
-	# fav_genre = models.CharField(
-	# 	max_length=20,
-	# 	choices=FAV_GENRE_CHOICES,
-	# 	default='Ninguno'
-	# )
-class Administrator(models.Model):
-	user = models.OneToOneField(UserProfile,blank=True, null=True, on_delete=models.CASCADE)
-	dato = models.CharField(max_length=15)
+	def _str_(self):
+		return self.user
 class Book(models.Model):
 	user = models.ForeignKey(UserBook, blank=True, null=True,on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
@@ -44,7 +31,20 @@ class Book(models.Model):
 		choices=BOOK_TYPE_CHOICES,
 		default=BOOK,
 	)
-	genre = models.CharField(max_length=30) #CAMBIAR
+	GENRE = 'Género'
+	GENRE_CHOICES = (
+		('ADVENTURE', "Aventura"),
+		('DRAMA', "Drama"),
+		('FANTASY', "Fantasía"),
+		('FICTION', "Ficción"),
+		('ROMANCE', "Romance"),
+		('HISTORY', "Historia"),
+		('POETRY', "Poesía"),
+	)
+	genre = models.CharField(
+		max_length=20,
+		choices=GENRE_CHOICES,
+	)
 	language = models.CharField(max_length=20) #CAMBIAR
 	ORIGINAL = 'Original'
 	ORIGINAL_CHOICES = (
@@ -72,5 +72,5 @@ class Book(models.Model):
 	number_of_pages = models.PositiveIntegerField()
 	picture = models.ImageField(upload_to='book/picture_books')
 
-	def __str__(self):
-		return self.title
+	def _str_(self):
+		return self.user

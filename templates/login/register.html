@@ -1,3 +1,4 @@
+
 {% load bootstrap4 %}
 {% load static %}
 <!DOCTYPE html>
@@ -25,58 +26,49 @@
 
 </head>
 
-<body class="card-no-border">
+<body class="card-no-border" >
 
     <section id="wrapper">
+         <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="margin-top:30px;">Ingrese datos</h1>
+                <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %}
+
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                      <button type="submit" class="btn btn-primary">Crear usuario</button>
+                    {% endbuttons %}
+
+                  </form>
+
+                  <!-- <input type="submit" value="Enviar" class="btn btn-primary float-right btn-lg"> -->
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section> 
+ <!--    <section id="wrapper">
         <div class="login-register" style="background-image:url(images/background/megamenubg.jpg);">
             <div class="login-box card">
                 <div class="card-body">
                   <form enctype="multipart/form-data" action="" method="POST">
                     {% csrf_token %}
+
                     {% bootstrap_form form %}
                     {% buttons %}
                       <button type="submit" class="btn btn-primary">Crear Admin</button>
                     {% endbuttons %}
 
                   </form>
-                    <!-- <form class="form-horizontal form-material" id="loginform" action="index.html">
-                        <h3 class="box-title m-b-20">Sign Up</h3>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Confirm Password">
-                            </div>
-                        </div>
-
-                        <div class="form-group text-center p-b-20">
-                            <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
-                            </div>
-                        </div>
-                        <div class="form-group m-b-0">
-                            <div class="col-sm-12 text-center">
-                                Already have an account? <a href="pages-login.html" class="text-info m-l-5"><b>Sign In</b></a>
-                            </div>
-                        </div>
-                    </form> -->
+                
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
     <!-- Bootstrap tether Core JavaScript -->

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from book.models import Book, User
+from book.models import *
 
 
 class BookForm(ModelForm):
@@ -34,3 +34,5 @@ class BookForm(ModelForm):
             'number_of_pages' : 'Número de páginas', 
             'picture' : 'Imagen del texto', 
         }
+
+

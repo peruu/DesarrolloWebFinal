@@ -1,0 +1,82 @@
+{% extends "base/base.html" %}
+{% block contenido %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<figure class="figure">
+					<img src="{{ detail_book.picture.url }}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                 </figure>
+			</div>
+			<div class="col-4">
+				<div class="form-group">
+					<label>Propietario</label>
+					<br>
+    				<label>{{detail_book.user}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Titulo</label>
+    				<br>
+    				<label>{{detail_book.title}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Autor</label>
+    				<br>
+    				<label>{{detail_book.author}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Editorial</label>
+    				<br>
+    				<label>{{detail_book.editorial}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Tipo de libro</label>
+    				<br>
+    				<label>{{detail_book.book_type}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Genero</label>
+    				<br>
+    				<label>{{detail_book.genre}}</label>
+  				</div>
+  			</div>
+  			<div class="col-4">
+  				<div class="form-group">
+    				<label>Idioma</label>
+    				<br>
+    				<label>{{detail_book.language}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Original</label>
+    				<br>
+    				<label>{{detail_book.original}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Tipo de cambio</label>
+    				<br>
+    				<label>{{detail_book.transaction}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Precio</label>
+    				<br>
+    				<label>{{detail_book.price}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Comentario</label>
+    				<br>
+    				<label>{{detail_book.comment}}</label>
+  				</div>
+  				<div class="form-group">
+    				<label>Numero de paginas</label>
+    				<br>
+    				<label>{{detail_book.number_of_pages}}</label>
+  				</div>	
+			</div>
+			
+		</div>
+		<div class="row">
+			<a class="btn btn-primary" href="{% url 'index' %}" role="button">Regresar</a>
+		</div>
+
+	</div>
+
+{% endblock contenido %}
